@@ -14,46 +14,51 @@
         .agenda-form { margin-top: 20px; padding: 20px; background: #77DD77; border-radius: 10px; color: white; }
         button { background: #FFB6C1; color: white; border: none; padding: 10px; border-radius: 5px; cursor: pointer; }
         button:hover { background: #FF69B4; }
+        #mensagem { display: none; color: green; font-weight: bold; margin-top: 10px; }
     </style>
 </head>
 <body>
     <header>Kodama Clínica</header>
     <div class="container">
-        <h2>Sobre a Kodama Clínica</h2>
+        <button onclick="rolarParaSobre()">Sobre a Clínica</button>
+
+        <h2 id="sobre">Sobre a Kodama Clínica</h2>
         <p>A Kodama Clínica surgiu a partir de um sonho: oferecer um atendimento especializado e acolhedor para pessoas neuroatípicas.</p>
         
         <h2>Profissionais</h2>
         <div class="profissionais">
             <div class="profissional">
-                <img src="imagens/psicologa.jpg.jpg" alt="Psicóloga">
-                <h3>Psicóloga - Dra. Ana Souza</h3>
+                <img src="imagens/psicologa.jpg" alt="Psicóloga">
+                <h3>Psicóloga - Ana Souza</h3>
                 <p>Avaliação e acompanhamento emocional e comportamental.</p>
             </div>
             <div class="profissional">
-                <img src="imagens/fonoaudiologo.jpg.jpg" alt="Fonoaudiólogo">
-                <h3>Fonoaudiólogo - Dr. Carlos Lima</h3>
+                <img src="imagens/fonoaudiologo.jpg" alt="Fonoaudiólogo">
+                <h3>Fonoaudiólogo - Carlos Lima</h3>
                 <p>Estimulação de comunicação e linguagem.</p>
             </div>
             <div class="profissional">
-                <img src="imagens/pedagoga.jpg.jpg" alt="Pedagoga">
-                <h3>Pedagoga - Profª. Beatriz Martins</h3>
+                <img src="imagens/pedagoga.jpg" alt="Pedagoga">
+                <h3>Pedagoga - Beatriz Martins</h3>
                 <p>Apoio pedagógico e desenvolvimento de habilidades acadêmicas.</p>
             </div>
         </div>
         
         <h2>Nosso Espaço</h2>
         <div class="clinica-fotos">
-            <div class="foto-clinica"><img src="imagens/faixadaclinica.jpg.jpg" alt="Fachada da clínica"></div>
-            <div class="foto-clinica"><img src="imagens/sala.jpg" alt="Sala de atendimento"></div>
+            <div class="foto-clinica"><img src="imagens/fachada.jpg" alt="Fachada da clínica"></div>
+            <div class="foto-clinica"><img src="imagens/sala1.jpg" alt="Sala de atendimento"></div>
         </div>
         
         <h2>Agende seu Atendimento</h2>
-        <form class="agenda-form">
+        <form class="agenda-form" onsubmit="mostrarMensagem(event)">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" required>
             <label for="profissional">Escolha o Profissional:</label>
             <select id="profissional" required>
-                <option value="Psicóloga - Dra. Ana Souza">Psicóloga - Dra. Ana Souza</option>
-                <option value="Fonoaudiólogo - Dr. Carlos Lima">Fonoaudiólogo - Dr. Carlos Lima</option>
-                <option value="Pedagoga - Profª. Beatriz Martins">Pedagoga - Profª. Beatriz Martins</option>
+                <option value="Psicóloga - Ana Souza">Psicóloga - Ana Souza</option>
+                <option value="Fonoaudiólogo - Carlos Lima">Fonoaudiólogo - Carlos Lima</option>
+                <option value="Pedagoga - Beatriz Martins">Pedagoga - Beatriz Martins</option>
             </select>
             <br><br>
             <label for="data">Data:</label>
@@ -64,6 +69,20 @@
             <br><br>
             <button type="submit">Agendar</button>
         </form>
+
+        <p id="mensagem">Consulta agendada!</p>
     </div>
+
+    <script>
+        function mostrarMensagem(event) {
+            event.preventDefault(); // Impede o envio do formulário
+            document.getElementById("mensagem").style.display = "block";
+        }
+
+        function rolarParaSobre() {
+            document.getElementById("sobre").scrollIntoView({ behavior: "smooth" });
+        }
+    </script>
 </body>
 </html>
+
